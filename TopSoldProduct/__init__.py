@@ -23,9 +23,6 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
 
         data = pd.read_sql_query(sa.text(query), conn)
 
-        # product_sales = data.set_index('product_id')
-
-        print(type(data))
         parsed = json.loads(data.to_json(orient='records'))
         return func.HttpResponse(
             json.dumps(parsed),

@@ -41,8 +41,6 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
 
         user_categories = product_views['category'].unique()
 
-        print(user_categories)
-
         top_views = top_categories[top_categories['category'].isin(
             user_categories)]
         # top_views = .loc[user_categories]

@@ -27,7 +27,6 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
         query = "SELECT TOP 3 p.* FROM events e LEFT JOIN Product p ON p.productId = e.productId WHERE e.sessionId <> '{}'  AND e.visitorId = '{}' AND eventType= '{}' ORDER BY e.dateTime DESC".format(
             session_id, visitor_id, event_type)
 
-        # data = pd.read_sql(query, conn)
         data = pd.read_sql_query(sa.text(query), conn)
 
         parsed = json.loads(data.to_json(orient='records'))

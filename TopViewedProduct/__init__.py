@@ -27,7 +27,6 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
 
         # product_views = data.set_index('productId')
 
-        print(type(data))
         parsed = json.loads(data.to_json(orient='records'))
         return func.HttpResponse(
             json.dumps(parsed),
